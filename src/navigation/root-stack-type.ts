@@ -1,4 +1,4 @@
 export type RootStackType = {
-  CardsList: {};
-  CardDetails: {};
+  CardsListScreen: undefined;
+  CardDetailsScreen: undefined;
 };

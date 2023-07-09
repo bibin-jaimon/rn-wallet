@@ -13,9 +13,9 @@ const Stack = createNativeStackNavigator<RootStackType>();
 
 const RootNavigator = () => (
   <NavigationContainer>
-    <Stack.Navigator initialRouteName="CardsList">
-      <Stack.Screen name="CardsList" component={CardsListScreen} />
-      <Stack.Screen name="CardDetails" component={CardDetailsScreen} />
+    <Stack.Navigator initialRouteName="CardsListScreen">
+      <Stack.Screen name="CardsListScreen" component={CardsListScreen} />
+      <Stack.Screen name="CardDetailsScreen" component={CardDetailsScreen} />
     </Stack.Navigator>
   </NavigationContainer>
 );

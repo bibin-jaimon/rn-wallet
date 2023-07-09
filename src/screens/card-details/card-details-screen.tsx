@@ -1,6 +1,9 @@
+import React from 'react';
 import { Text, View } from 'react-native';
 
-const CardDetailsScreen = () => {
+interface CardDetailsScreenProps {}
+
+const CardDetailsScreen: React.FC<CardDetailsScreenProps> = (props) => {
   return (
     <View>
       <Text>Card Details works</Text>
