@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "id": 0,
+      "name": "Card 1",
+      "bgColor": "red"
+    },
+    {
+      "id": 1,
+      "name": "Card 2",
+      "bgColor": "green"
+    },
+    {
+      "id": 2,
+      "name": "Card 3",
+      "bgColor": "yellow"
+    },
+    {
+      "id": 3,
+      "name": "Card 4",
+      "bgColor": "blue"
+    }
+  ]
+}
