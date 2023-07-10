@@ -3,20 +3,47 @@
     {
       "id": 0,
       "name": "Card 0",
-      "bgColor": "red",
-      "bgImage": "visa"
+      "bgImage": "visa",
+      "transactions": [
+        {
+          "note": "Slack Technologies",
+          "amount": "123",
+          "currency": "$",
+          "date": "Today"
+        },
+        {
+          "note": "Slack Technologies",
+          "amount": "123",
+          "currency": "$",
+          "date": "Today"
+        }
+      ]
     },
     {
       "id": 1,
       "name": "Card 1",
-      "bgColor": "green",
-      "bgImage": "platinum"
+      "bgImage": "platinum",
+      "transactions": [
+        {
+          "note": "Slack Technologies",
+          "amount": "123",
+          "currency": "$",
+          "date": "Friday"
+        }
+      ]
     },
     {
       "id": 2,
       "name": "Card 2",
-      "bgColor": "yellow",
-      "bgImage": "gold"
+      "bgImage": "gold",
+      "transactions": [
+        {
+          "note": "Slack Technologies",
+          "amount": "123",
+          "currency": "$",
+          "date": "Friday"
+        }
+      ]
     }
   ]
 }
