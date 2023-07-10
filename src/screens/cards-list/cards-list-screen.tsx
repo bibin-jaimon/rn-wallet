@@ -21,6 +21,7 @@ import Animated from 'react-native-reanimated';
 import { colors, strings } from '../../resource';
 import * as NavigationServie from '../../navigation/navigation-service';
 
+// To calculate the scrollview height for android
 const contentContainerStyleAndroid = (itemCount: number) => {
   const deviceHeight: number = Dimensions.get('window').height;
   const scrollViewContentHeightAdjustment = itemCount * 60 + deviceHeight;
@@ -32,6 +33,13 @@ const contentContainerStyleAndroid = (itemCount: number) => {
   return style;
 };
 
+/**
+ * To calculate vertical translation for the view
+ * @param index Index of the current card
+ * @param scrollOffset Current scroll view offset
+ * @param stepOffset Minimum requred vertical offset
+ * @returns New vertical translation value
+ */
 const calculateTranslateY = (
   index: number,
   scrollOffset: number,

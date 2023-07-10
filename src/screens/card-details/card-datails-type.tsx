@@ -9,6 +9,9 @@ export type CardDetailsScreenProps = NativeStackScreenProps<
 >;
 
 export interface TransactioRenderParams {
+  /**
+   * Transaction item
+   */
   item: Transaction;
   index: number;
 }

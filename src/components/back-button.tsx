@@ -3,6 +3,9 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { strings } from '../resource';
 
 interface BackButtonProp {
+  /**
+   * Title value for the back button
+   */
   title?: string;
 }
 

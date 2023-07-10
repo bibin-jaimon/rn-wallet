@@ -4,6 +4,11 @@ import { CardViewPropType } from '../screens/cards-list/card-list-type';
 import Animated from 'react-native-reanimated';
 import { dimen, images } from '../resource';
 
+/**
+ * To retrieve image from the of the card
+ * @param type Image type coming from card object
+ * @returns Image for a type of card
+ */
 const getCardImage = (type: string) => {
   switch (type) {
     case 'gold':
@@ -14,6 +19,7 @@ const getCardImage = (type: string) => {
       return images.visa;
   }
 };
+
 const CardView = (props: CardViewPropType) => {
   const { card } = props;
   let cardImage = getCardImage(card.bgImage);

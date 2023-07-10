@@ -10,6 +10,9 @@ import { CardDetailsScreen } from '../screens/card-details/card-details-screen';
 // Components
 import { BackButton } from '../components/back-button';
 
+/**
+ * Default configuration for all the screens
+ */
 const defaultScreenOptions = {
   headerStyle: {
     backgroundColor: 'black',
@@ -23,6 +26,9 @@ interface StackConfig {
   options: NativeStackNavigationOptions;
 }
 
+/**
+ * To add configuration for new screens
+ */
 const stackConfiguration: StackConfig[] = [
   {
     name: 'CardsListScreen',
