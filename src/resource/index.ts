@@ -17,5 +17,6 @@ export const strings = {
 
 export const colors = {
   white: 'white',
-  black: 'black'
+  black: 'black',
+  gray: 'gray'
 }

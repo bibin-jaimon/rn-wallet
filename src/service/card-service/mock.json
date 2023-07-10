@@ -12,7 +12,19 @@
           "date": "Today"
         },
         {
-          "note": "Slack Technologies",
+          "note": "Uber",
+          "amount": "123",
+          "currency": "$",
+          "date": "Today"
+        },
+        {
+          "note": "Uber",
+          "amount": "123",
+          "currency": "$",
+          "date": "Today"
+        },
+        {
+          "note": "Uber",
           "amount": "123",
           "currency": "$",
           "date": "Today"
@@ -29,6 +41,18 @@
           "amount": "123",
           "currency": "$",
           "date": "Friday"
+        },
+        {
+          "note": "Uber",
+          "amount": "123",
+          "currency": "$",
+          "date": "Today"
+        },
+        {
+          "note": "Uber",
+          "amount": "123",
+          "currency": "$",
+          "date": "Today"
         }
       ]
     },
@@ -42,6 +66,18 @@
           "amount": "123",
           "currency": "$",
           "date": "Friday"
+        },
+        {
+          "note": "Uber",
+          "amount": "123",
+          "currency": "$",
+          "date": "Today"
+        },
+        {
+          "note": "Uber",
+          "amount": "123",
+          "currency": "$",
+          "date": "Today"
         }
       ]
     }
