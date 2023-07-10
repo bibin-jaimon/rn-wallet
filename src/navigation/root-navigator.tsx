@@ -15,15 +15,7 @@ const RootNavigator = () => (
   <NavigationContainer>
     <Stack.Navigator initialRouteName="CardsListScreen">
       <Stack.Screen name="CardsListScreen" component={CardsListScreen} />
-      <Stack.Screen
-        name="CardDetailsScreen"
-        component={CardDetailsScreen}
-        options={{
-          headerShown: false,
-          presentation: 'transparentModal',
-          animation: 'fade',
-        }}
-      />
+      <Stack.Screen name="CardDetailsScreen" component={CardDetailsScreen} />
     </Stack.Navigator>
   </NavigationContainer>
 );

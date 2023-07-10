@@ -18,11 +18,11 @@ import {
 import { fetchCards } from '../../service/card-service/card-service';
 import { CardView } from './card';
 
-const CardsListScreen: React.FC<CardsListScreenProps> = () => {
+const CardsListScreen = (props: CardsListScreenProps) => {
+  const { navigation } = props;
   const stepOffset = 60;
   const [cardData, setCardData] = useState<Card[]>([]);
   const [scrollOffset, setScrollOffset] = useState<number>(0);
-
   useEffect(() => {
     fetchCards().then((cards: Card[]) => setCardData(cards));
   }, []);
@@ -38,9 +38,14 @@ const CardsListScreen: React.FC<CardsListScreenProps> = () => {
       translateY = initialOffset - scrollOffset * index;
     }
     return (
-      <Animated.View style={{ transform: [{ translateY: translateY }] }}>
-        <CardView card={item} />
-      </Animated.View>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate('CardDetailsScreen', { card: item })
+        }>
+        <Animated.View style={{ transform: [{ translateY: translateY }] }}>
+          <CardView card={item} />
+        </Animated.View>
+      </TouchableOpacity>
     );
   };
 

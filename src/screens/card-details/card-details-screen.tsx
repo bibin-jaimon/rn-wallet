@@ -1,12 +1,15 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+import { CardView } from '../cards-list/card';
+import { Card } from '../cards-list/card-list-type';
+import { CardDetailsScreenProps } from './card-datails-type';
 
-interface CardDetailsScreenProps {}
+const CardDetailsScreen = (props: CardDetailsScreenProps) => {
+  const { card } = props.route.params;
 
-const CardDetailsScreen: React.FC<CardDetailsScreenProps> = (props) => {
   return (
-    <View>
-      <Text>Card Details works</Text>
+    <View style={{ flex: 1, backgroundColor: 'white' }}>
+      <CardView card={card} />
     </View>
   );
 };

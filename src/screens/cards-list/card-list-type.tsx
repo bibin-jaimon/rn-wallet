@@ -1,8 +1,5 @@
-export interface CardsListScreenProps {}
-
-export interface CardPropType {
-  card: Card;
-}
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackType } from '../../navigation/root-stack-type';
 
 export interface Card {
   id: number;
@@ -10,7 +7,16 @@ export interface Card {
   bgColor: string;
 }
 
+export interface CardPropType {
+  card: Card;
+}
+
 export interface CardRenderItemParams {
   item: Card;
   index: number;
 }
+
+export type CardsListScreenProps = NativeStackScreenProps<
+  RootStackType,
+  'CardsListScreen'
+>;
