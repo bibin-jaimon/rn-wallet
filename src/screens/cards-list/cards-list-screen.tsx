@@ -4,8 +4,7 @@ import {
   Text,
   View,
   Animated,
-  TouchableOpacity,
-  ScrollView,
+  Pressable,
 } from 'react-native';
 import { useEffect, useRef, useState } from 'react';
 import {
@@ -16,7 +15,7 @@ import {
 
 //services
 import { fetchCards } from '../../service/card-service/card-service';
-import { CardView } from './card';
+import { CardView } from './card-view';
 
 const CardsListScreen = (props: CardsListScreenProps) => {
   const { navigation } = props;
@@ -38,25 +37,25 @@ const CardsListScreen = (props: CardsListScreenProps) => {
       translateY = initialOffset - scrollOffset * index;
     }
     return (
-      <TouchableOpacity
+      <Pressable
         onPress={() =>
           navigation.navigate('CardDetailsScreen', { card: item })
         }>
         <Animated.View style={{ transform: [{ translateY: translateY }] }}>
           <CardView card={item} />
         </Animated.View>
-      </TouchableOpacity>
+      </Pressable>
     );
   };
 
   return (
     <View style={styles.container}>
       <FlatList
+        contentInsetAdjustmentBehavior="automatic"
         data={cardData}
         renderItem={renderItem}
         keyExtractor={item => `${item.id}`}
         showsHorizontalScrollIndicator={false}
-        alwaysBounceVertical={true}
         onScroll={event => {
           let value = event.nativeEvent.contentOffset.y;
           setScrollOffset(value);

@@ -1,9 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { CardPropType } from './card-list-type';
-import { useNavigation } from '@react-navigation/native';
+import { CardViewPropType } from './card-list-type';
 
-const CardView = (props: CardPropType) => {
+const CardView = (props: CardViewPropType) => {
   const { card } = props;
   return (
     <View style={{ ...styles.card, backgroundColor: card.bgColor }}>

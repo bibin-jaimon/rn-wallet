@@ -7,7 +7,7 @@ export interface Card {
   bgColor: string;
 }
 
-export interface CardPropType {
+export interface CardViewPropType {
   card: Card;
 }
 
