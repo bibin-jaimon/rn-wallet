@@ -1,8 +1,12 @@
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { RootNavigator } from '../navigation/root-navigator';
+import { StatusBar } from 'react-native';
 
 const RootComponent = () => {
   return (
-      <RootNavigator/>
+    <SafeAreaView style={{ flex: 1 }}>
+      <RootNavigator />
+    </SafeAreaView>
   );
 };
 

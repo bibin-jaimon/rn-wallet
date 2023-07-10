@@ -8,7 +8,7 @@ const CardDetailsScreen = (props: CardDetailsScreenProps) => {
   const { card } = props.route.params;
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View style={{ backgroundColor: 'white' }}>
       <CardView card={card} />
     </View>
   );

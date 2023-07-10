@@ -8,7 +8,6 @@ import { CardDetailsScreen } from '../screens/card-details/card-details-screen';
 
 // StackType
 import { RootStackType } from './root-stack-type';
-import { Text } from 'react-native';
 
 const Stack = createNativeStackNavigator<RootStackType>();
 
@@ -20,17 +19,13 @@ const RootNavigator = () => (
         component={CardsListScreen}
         options={{
           title: 'Wallet',
-          headerShown: false
-          // headerLeft: () => {
-          //   return <Text>Hey there</Text>;
-          // },
-          // headerLargeTitle: true
+          headerShown: false,
         }}
       />
       <Stack.Screen
         name="CardDetailsScreen"
         component={CardDetailsScreen}
-        options={{ headerBackTitle: 'Done', }}
+        options={{ headerBackTitle: 'Done' }}
       />
     </Stack.Navigator>
   </NavigationContainer>
