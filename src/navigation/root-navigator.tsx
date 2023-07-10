@@ -18,16 +18,20 @@ const RootNavigator = () => (
       <Stack.Screen
         name="CardsListScreen"
         component={CardsListScreen}
-        
         options={{
           title: 'Wallet',
+          headerShown: false
           // headerLeft: () => {
           //   return <Text>Hey there</Text>;
           // },
           // headerLargeTitle: true
         }}
       />
-      <Stack.Screen name="CardDetailsScreen" component={CardDetailsScreen} />
+      <Stack.Screen
+        name="CardDetailsScreen"
+        component={CardDetailsScreen}
+        options={{ headerBackTitle: 'Done', }}
+      />
     </Stack.Navigator>
   </NavigationContainer>
 );
