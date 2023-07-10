@@ -25,7 +25,11 @@ const RootNavigator = () => (
       <Stack.Screen
         name="CardDetailsScreen"
         component={CardDetailsScreen}
-        options={{ headerBackTitle: 'Done' }}
+        options={{
+          headerBackTitle: 'Done',
+          // presentation: 'transparentModal',
+          // animation: 'fade',
+        }}
       />
     </Stack.Navigator>
   </NavigationContainer>

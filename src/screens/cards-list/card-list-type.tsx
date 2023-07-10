@@ -5,6 +5,7 @@ export interface Card {
   id: number;
   name: string;
   bgColor: string;
+  bgImage: string;
 }
 
 export interface CardViewPropType {

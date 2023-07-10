@@ -2,23 +2,21 @@
   "data": [
     {
       "id": 0,
-      "name": "Card 1",
-      "bgColor": "red"
+      "name": "Card 0",
+      "bgColor": "red",
+      "bgImage": "visa"
     },
     {
       "id": 1,
-      "name": "Sreekanth ICICI",
-      "bgColor": "green"
+      "name": "Card 1",
+      "bgColor": "green",
+      "bgImage": "platinum"
     },
     {
       "id": 2,
-      "name": "Card 3",
-      "bgColor": "yellow"
-    },
-    {
-      "id": 3,
-      "name": "Card 4",
-      "bgColor": "blue"
+      "name": "Card 2",
+      "bgColor": "yellow",
+      "bgImage": "gold"
     }
   ]
 }

@@ -3,12 +3,11 @@ import {
   StyleSheet,
   Text,
   View,
-  Animated,
   Pressable,
   Platform,
-  ViewStyle,
   Dimensions,
-  StatusBar,
+  Button,
+  TouchableOpacity,
 } from 'react-native';
 import { useEffect, useRef, useState } from 'react';
 import {
@@ -20,15 +19,16 @@ import {
 import { fetchCards } from '../../service/card-service/card-service';
 import { CardView } from './card-view';
 
+import Animated from 'react-native-reanimated';
+
 const contentContainerStyleAndroid = (itemCount: number) => {
   const deviceHeight: number = Dimensions.get('window').height;
   const scrollViewContentHeightAdjustment = itemCount * 60 + deviceHeight;
-  const style =
-    Platform.OS == 'ios'
-      ? {}
-      : {
-          height: scrollViewContentHeightAdjustment,
-        };
+  const contentContainerStyle = {
+    flexGrow: 1,
+    height: scrollViewContentHeightAdjustment,
+  };
+  const style = Platform.OS == 'ios' ? {} : contentContainerStyle;
   return style;
 };
 
@@ -46,7 +46,7 @@ const CardsListScreen = (props: CardsListScreenProps) => {
 
   const renderItem = (data: CardRenderItemParams) => {
     const { index, item } = data;
-    
+
     // Calculating translationY
     const initialOffset = index * STEP_OFFSET;
     let translateY = initialOffset;
@@ -55,21 +55,23 @@ const CardsListScreen = (props: CardsListScreenProps) => {
         translateY - scrollOffset > 0 ? translateY - scrollOffset : 0;
     } else {
       const newTranslateY = initialOffset - scrollOffset * index;
-      const verticalLimit = initialOffset * 2;
+      const verticalLimit = initialOffset * 1.8;
       translateY =
         newTranslateY < verticalLimit ? newTranslateY : verticalLimit;
     }
 
     const handleOnPressCardView = (card: Card) => {
-      navigation.navigate('CardDetailsScreen', { card: item });
+      navigation.navigate('CardDetailsScreen', { card: card });
     };
 
     return (
-      <View style={styles.flatListItem}>
+      <View
+        style={[
+          styles.flatListItem,
+          { transform: [{ translateY: translateY }] },
+        ]}>
         <Pressable onPress={() => handleOnPressCardView(item)}>
-          <Animated.View style={{ transform: [{ translateY: translateY }] }}>
-            <CardView card={item} />
-          </Animated.View>
+          <CardView card={item} />
         </Pressable>
       </View>
     );
@@ -92,7 +94,7 @@ const CardsListScreen = (props: CardsListScreenProps) => {
         ListHeaderComponent={renderListHeaderView}
         data={cardData}
         renderItem={renderItem}
-        keyExtractor={item => `${item.id}`}
+        keyExtractor={item => `key-${item.id}`}
         showsHorizontalScrollIndicator={false}
         onScroll={event => {
           let value = event.nativeEvent.contentOffset.y;
@@ -114,6 +116,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
+    paddingHorizontal: 10,
   },
   flatListHeaderContainer: {
     paddingLeft: 10,
