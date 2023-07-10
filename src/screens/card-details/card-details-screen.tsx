@@ -1,20 +1,34 @@
 import React from 'react';
-import { Button, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 import { CardView } from '../cards-list/card-view';
-import { Card } from '../cards-list/card-list-type';
 import { CardDetailsScreenProps } from './card-datails-type';
-import Animated from 'react-native-reanimated';
-import { useNavigation } from '@react-navigation/native';
 
 const CardDetailsScreen = (props: CardDetailsScreenProps) => {
   const { card } = props.route.params;
 
   return (
-    <View style={{ backgroundColor: 'black', flex:1 }}>
+    <View style={styles.container}>
       <CardView card={card} />
-      <Text style={{color: 'white'}}>Latest Transactions</Text>
+      <View style={styles.latestTextContainer}>
+        <Text style={styles.latestText}>Latest Transactions</Text>
+      </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingHorizontal: 10,
+    backgroundColor: 'black',
+    paddingTop: 8
+  },
+  latestTextContainer: { padding: 10, marginTop: 10 },
+  latestText: {
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold'
+  },
+});
 
 export { CardDetailsScreen };

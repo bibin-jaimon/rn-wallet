@@ -109,7 +109,7 @@ const CardsListScreen = (props: CardsListScreenProps) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black', // change this for to check android issue
+    backgroundColor: 'black',
   },
   flatListItem: {
     position: 'absolute',
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   flatListHeaderContainer: {
-    paddingLeft: 10,
+    padding: 10,
     height: 100,
     backgroundColor: 'black',
     justifyContent: 'flex-end',

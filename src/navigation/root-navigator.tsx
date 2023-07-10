@@ -2,35 +2,23 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-// Screens
-import { CardsListScreen } from '../screens/cards-list/cards-list-screen';
-import { CardDetailsScreen } from '../screens/card-details/card-details-screen';
-
 // StackType
 import { RootStackType } from './root-stack-type';
+import { stackConfiguration } from './root-navigator-config';
 
 const Stack = createNativeStackNavigator<RootStackType>();
 
 const RootNavigator = () => (
   <NavigationContainer>
-    <Stack.Navigator initialRouteName="CardsListScreen">
-      <Stack.Screen
-        name="CardsListScreen"
-        component={CardsListScreen}
-        options={{
-          title: 'Wallet',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="CardDetailsScreen"
-        component={CardDetailsScreen}
-        options={{
-          headerBackTitle: 'Done',
-          // presentation: 'transparentModal',
-          // animation: 'fade',
-        }}
-      />
+    <Stack.Navigator initialRouteName={stackConfiguration[0].name}>
+      {stackConfiguration.map(({ name, component, options }) => (
+        <Stack.Screen
+          key={name}
+          name={name}
+          component={component}
+          options={options}
+        />
+      ))}
     </Stack.Navigator>
   </NavigationContainer>
 );
