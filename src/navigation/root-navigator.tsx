@@ -6,10 +6,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackType } from './root-stack-type';
 import { stackConfiguration } from './root-navigator-config';
 
+import * as NavigationServie from './navigation-service';
+
 const Stack = createNativeStackNavigator<RootStackType>();
 
 const RootNavigator = () => (
-  <NavigationContainer>
+  <NavigationContainer ref={NavigationServie.getNavigationRef()}>
     <Stack.Navigator initialRouteName={stackConfiguration[0].name}>
       {stackConfiguration.map(({ name, component, options }) => (
         <Stack.Screen

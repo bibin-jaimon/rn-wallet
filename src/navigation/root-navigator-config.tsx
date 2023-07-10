@@ -1,5 +1,6 @@
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { RootStackType } from './root-stack-type';
+import * as NavigationServie from '../navigation/navigation-service';
 
 
 // Screens
@@ -37,7 +38,7 @@ const stackConfiguration: StackConfig[] = [
     component: CardDetailsScreen,
     options: {
       ...defaultScreenOptions,
-      headerLeft: () => <BackButton />,
+      headerLeft: () => <BackButton/>,
       headerBackTitle: 'Done',
       presentation: 'transparentModal',
       animation: 'fade',
