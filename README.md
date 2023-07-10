@@ -5,7 +5,7 @@
 Video Link: https://youtu.be/heE8rWAYDy8
 
 ### React Native Version
-The current version of React Native being used in this project is `"0.72.1`.
+The current version of React Native being used in this project is `0.72.1`.
 
 ### To clone the repo
 ```git
