@@ -41,6 +41,7 @@ const stackConfiguration: StackConfig[] = [
       headerBackTitle: 'Done',
       presentation: 'transparentModal',
       animation: 'fade',
+      title: ''
     },
   },
 ];

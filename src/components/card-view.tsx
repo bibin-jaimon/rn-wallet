@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { CardViewPropType } from './card-list-type';
+import { CardViewPropType } from '../screens/cards-list/card-list-type';
 import Animated from 'react-native-reanimated';
-import { images } from '../../resource';
+import { dimen, images } from '../resource';
 
 const getCardImage = (type: string) => {
   switch (type) {
@@ -30,12 +30,6 @@ const CardView = (props: CardViewPropType) => {
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 15,
-    shadowColor: '#000',
-    shadowOpacity: 0.2,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
-    elevation: 2,
     alignItems: 'center',
     justifyContent: 'center',
     height: 240,
@@ -48,7 +42,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     resizeMode: 'stretch',
-    borderRadius: 10,
+    borderRadius: dimen.defaultBorderRadius,
     borderWidth: 2,
     borderColor: 'white',
   },

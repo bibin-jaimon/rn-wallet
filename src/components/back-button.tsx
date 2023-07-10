@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { strings } from '../resource';
 
 interface BackButtonProp {
   title?: string;
@@ -7,7 +8,7 @@ interface BackButtonProp {
 
 const BackButton = (props: BackButtonProp) => {
   const navigation = useNavigation();
-  const { title = 'Done' } = props;
+  const { title = strings.done } = props;
   const onPress = () => {
     if (navigation.canGoBack()) {
       navigation.goBack();

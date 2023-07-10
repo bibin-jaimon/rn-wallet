@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
-import { CardView } from '../cards-list/card-view';
+import { CardView } from '../../components/card-view';
 import { CardDetailsScreenProps } from './card-datails-type';
+import { colors, dimen, strings } from '../../resource';
 
 const CardDetailsScreen = (props: CardDetailsScreenProps) => {
   const { card } = props.route.params;
@@ -10,7 +11,7 @@ const CardDetailsScreen = (props: CardDetailsScreenProps) => {
     <View style={styles.container}>
       <CardView card={card} />
       <View style={styles.latestTextContainer}>
-        <Text style={styles.latestText}>Latest Transactions</Text>
+        <Text style={styles.latestText}>{strings.latestTransaction}</Text>
       </View>
     </View>
   );
@@ -20,14 +21,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 10,
-    backgroundColor: 'black',
-    paddingTop: 8
+    backgroundColor: colors.black,
+    paddingTop: 8,
   },
   latestTextContainer: { padding: 10, marginTop: 10 },
   latestText: {
-    color: 'white',
-    fontSize: 24,
-    fontWeight: 'bold'
+    color: colors.white,
+    fontSize: dimen.largeText,
+    fontWeight: 'bold',
   },
 });
 
