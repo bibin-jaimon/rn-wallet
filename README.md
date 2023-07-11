@@ -1,8 +1,8 @@
 # Apple Wallet Clone in ReactNative
 
 ### Click below image to watch the video
-[![ReactNativeWallet](./doc/ss-1.png)](https://youtu.be/heE8rWAYDy8)
-Video Link: https://youtu.be/heE8rWAYDy8
+[![ReactNativeWallet](./doc/ss-1.png)](https://youtu.be/eJoyWtnbn_I)
+Video Link: https://youtu.be/eJoyWtnbn_I
 
 ### React Native Version
 The current version of React Native being used in this project is `0.72.1`.
