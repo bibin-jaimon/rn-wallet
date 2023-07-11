@@ -1,7 +1,7 @@
 # Apple Wallet Clone in ReactNative
 
 ### Click below image to watch the video
-[![ReactNativeWallet](./doc/ss-1.png)](https://youtu.be/eJoyWtnbn_I)
+[![ReactNativeWallet](./doc/ss-2.png)](https://youtu.be/eJoyWtnbn_I)
 Video Link: https://youtu.be/eJoyWtnbn_I
 
 ### React Native Version
