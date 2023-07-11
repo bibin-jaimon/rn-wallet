@@ -23,7 +23,7 @@ const CardDetailsScreen = (props: CardDetailsScreenProps) => {
     return <TransactionItem data={item} />;
   };
   return (
-    <ScrollView bounces={false}>
+    <ScrollView bounces={false} style={styles.scrollContainer}>
       <View style={styles.container}>
         <CardView card={card} />
         <View style={styles.latestTextContainer}>
@@ -42,6 +42,7 @@ const CardDetailsScreen = (props: CardDetailsScreenProps) => {
 };
 
 const styles = StyleSheet.create({
+  scrollContainer: { paddingTop: 0 },
   container: {
     flex: 1,
     paddingHorizontal: 10,
