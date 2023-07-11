@@ -30,7 +30,7 @@ export interface Card {
   id: number;
 
   /**
-   * Name of the card
+   * Name of the bank of card
    */
   name: string;
 
@@ -38,6 +38,21 @@ export interface Card {
    * Image for the card
    */
   bgImage: string;
+
+  /**
+   * Name of the owner
+   */
+  cardHolderName: string;
+
+  /**
+   * Card Number
+   */
+  cardNumber: string;
+
+  /**
+   * Expiry date of the card
+   */
+  validity: string;
 
   /**
    * Transaction list for of the cards

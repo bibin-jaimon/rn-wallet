@@ -7,24 +7,23 @@ import {
   Platform,
   Dimensions,
 } from 'react-native';
-import { useEffect, useState } from 'react';
 import {
   Card,
   CardRenderItemParams,
   CardsListScreenProps,
 } from './card-list-type';
 
-import { fetchCards } from '../../service/card-service/card-service';
-import { CardView } from '../../components/card-view';
-
+import { useEffect, useState } from 'react';
 import Animated from 'react-native-reanimated';
 import { colors, strings } from '../../resource';
+import { CardView } from '../../components/card-view';
+import { fetchCards } from '../../service/card-service/card-service';
 import * as NavigationServie from '../../navigation/navigation-service';
 
 // To calculate the scrollview height for android
 const contentContainerStyleAndroid = (itemCount: number) => {
   const deviceHeight: number = Dimensions.get('window').height;
-  const scrollViewContentHeightAdjustment = itemCount * 60 + deviceHeight;
+  const scrollViewContentHeightAdjustment = itemCount * 28 + deviceHeight;
   const contentContainerStyle = {
     flexGrow: 1,
     height: scrollViewContentHeightAdjustment,
@@ -72,7 +71,6 @@ const CardsListScreen = (props: CardsListScreenProps) => {
 
   const renderItem = (data: CardRenderItemParams) => {
     const { index, item } = data;
-    // Calculating translationY
     const translateY = calculateTranslateY(index, scrollOffset);
     const handleOnPressCardView = (card: Card) => {
       NavigationServie.navigateToCardDetailScreen({ card: card });
@@ -101,23 +99,23 @@ const CardsListScreen = (props: CardsListScreenProps) => {
     );
   };
 
-  const renderFlatList = () => (
-    <FlatList
-      contentContainerStyle={contentContainerStyle}
-      ListHeaderComponent={renderListHeaderView}
-      data={cardData}
-      renderItem={renderItem}
-      keyExtractor={item => `key-${item.id}`}
-      showsHorizontalScrollIndicator={false}
-      onScroll={event => {
-        let value = event.nativeEvent.contentOffset.y;
-        setScrollOffset(value);
-      }}
-      scrollEventThrottle={16}
-    />
+  return (
+    <View style={styles.container}>
+      <FlatList
+        contentContainerStyle={contentContainerStyle}
+        ListHeaderComponent={renderListHeaderView}
+        data={cardData}
+        renderItem={renderItem}
+        keyExtractor={item => `key-${item.id}`}
+        showsHorizontalScrollIndicator={false}
+        onScroll={event => {
+          let value = event.nativeEvent.contentOffset.y;
+          setScrollOffset(value);
+        }}
+        scrollEventThrottle={16}
+      />
+    </View>
   );
-
-  return <View style={styles.container}>{renderFlatList()}</View>;
 };
 
 const styles = StyleSheet.create({

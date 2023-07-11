@@ -2,13 +2,13 @@ import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { RootStackType } from './root-stack-type';
 import * as NavigationServie from '../navigation/navigation-service';
 
-
 // Screens
 import { CardsListScreen } from '../screens/cards-list/cards-list-screen';
 import { CardDetailsScreen } from '../screens/card-details/card-details-screen';
 
 // Components
 import { BackButton } from '../components/back-button';
+import { strings } from '../resource';
 
 /**
  * Default configuration for all the screens
@@ -35,8 +35,8 @@ const stackConfiguration: StackConfig[] = [
     component: CardsListScreen,
     options: {
       ...defaultScreenOptions,
-      title: 'Wallet',
       headerShown: false,
+      title: '',
     },
   },
   {
@@ -44,11 +44,11 @@ const stackConfiguration: StackConfig[] = [
     component: CardDetailsScreen,
     options: {
       ...defaultScreenOptions,
-      headerLeft: () => <BackButton/>,
-      headerBackTitle: 'Done',
+      headerLeft: () => <BackButton />,
+      headerBackTitle: strings.done,
+      title: '',
       presentation: 'transparentModal',
       animation: 'fade',
-      title: ''
     },
   },
 ];
