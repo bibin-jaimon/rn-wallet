@@ -6,6 +6,9 @@ import {
   Pressable,
   Platform,
   Dimensions,
+  ListRenderItem,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
 } from 'react-native';
 import {
   Card,
@@ -14,11 +17,17 @@ import {
 } from './card-list-type';
 
 import { useEffect, useState } from 'react';
-import Animated from 'react-native-reanimated';
+import Animated, {
+  AnimatedStyleProp,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 import { colors, strings } from '../../resource';
 import { CardView } from '../../components/card-view';
 import { fetchCards } from '../../service/card-service/card-service';
 import * as NavigationServie from '../../navigation/navigation-service';
+import { CardListRenderItem } from './list-card-item';
 
 // To calculate the scrollview height for android
 const contentContainerStyleAndroid = (itemCount: number) => {
@@ -32,31 +41,6 @@ const contentContainerStyleAndroid = (itemCount: number) => {
   return style;
 };
 
-/**
- * To calculate vertical translation for the view
- * @param index Index of the current card
- * @param scrollOffset Current scroll view offset
- * @param stepOffset Minimum requred vertical offset
- * @returns New vertical translation value
- */
-const calculateTranslateY = (
-  index: number,
-  scrollOffset: number,
-  stepOffset = 60,
-) => {
-  const initialOffset = index * stepOffset;
-  let translateY = initialOffset;
-  if (scrollOffset > 0) {
-    translateY = translateY - scrollOffset > 0 ? translateY - scrollOffset : 0;
-  } else {
-    const newTranslateY = initialOffset - scrollOffset * index;
-    const verticalLimit = initialOffset * 1.8;
-    translateY = newTranslateY < verticalLimit ? newTranslateY : verticalLimit;
-  }
-
-  return translateY;
-};
-
 const CardsListScreen = (props: CardsListScreenProps) => {
   const { navigation } = props;
   const [cardData, setCardData] = useState<Card[]>([]);
@@ -66,28 +50,9 @@ const CardsListScreen = (props: CardsListScreenProps) => {
     // Import card data
     fetchCards().then((cards: Card[]) => setCardData(cards));
   }, []);
-
   const contentContainerStyle = contentContainerStyleAndroid(cardData.length);
 
-  const renderItem = (data: CardRenderItemParams) => {
-    const { index, item } = data;
-    const translateY = calculateTranslateY(index, scrollOffset);
-    const handleOnPressCardView = (card: Card) => {
-      NavigationServie.navigateToCardDetailScreen({ card: card });
-    };
-
-    return (
-      <Animated.View
-        style={[
-          styles.flatListItem,
-          { transform: [{ translateY: translateY }] },
-        ]}>
-        <Pressable onPress={() => handleOnPressCardView(item)}>
-          <CardView card={item} />
-        </Pressable>
-      </Animated.View>
-    );
-  };
+  const sharedValue = useSharedValue(0);
 
   const renderListHeaderView = () => {
     return (
@@ -99,6 +64,23 @@ const CardsListScreen = (props: CardsListScreenProps) => {
     );
   };
 
+  const handleOnPressCardView = (card: Card) => {
+    NavigationServie.navigateToCardDetailScreen({ card: card });
+  };
+
+  const onScrollFlatList = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    let value = event.nativeEvent.contentOffset.y;
+    sharedValue.value = value;
+  }
+
+  const renderItem: ListRenderItem<Card> = (data: CardRenderItemParams) => (
+    <CardListRenderItem
+      onPress={handleOnPressCardView}
+      sharedValue={sharedValue}
+      data={data}
+    />
+  )
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -108,11 +90,9 @@ const CardsListScreen = (props: CardsListScreenProps) => {
         renderItem={renderItem}
         keyExtractor={item => `key-${item.id}`}
         showsHorizontalScrollIndicator={false}
-        onScroll={event => {
-          let value = event.nativeEvent.contentOffset.y;
-          setScrollOffset(value);
-        }}
+        onScroll={onScrollFlatList}
         scrollEventThrottle={16}
+        initialNumToRender={10}
       />
     </View>
   );
